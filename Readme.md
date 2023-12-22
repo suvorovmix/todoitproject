@@ -1,5 +1,3 @@
-Python 3.11.2 | Django 5.0
-
 # TodoIt Project
 
 ## Overview
@@ -17,9 +15,31 @@ These instructions will help you set up a copy of the project on your local mach
 ### Prerequisites
 - Python 3.8+
 - Django 3.2+
+- *In requirements.txt used - Python 3.11.2 | Django 5.0
 
 ### Installation
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/todoitproject.git
-  
+2. Navigate to the project directory:
+   ```bash
+   cd todoitproject
+3. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+4. Run the development server:
+   ```bash
+   python manage.py runserver
+
+## Running the Tests
+To run the automated tests for this system:
+   ```bash
+   pytest
+
+## Built With
+- Django - The web framework used
+- SQLite - Database Engine
+- Bootstrap - Front-end Framework
+
+## Authors
+- Suvorov Mikhail @suvorovmix
