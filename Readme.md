@@ -30,9 +30,7 @@ These instructions will help you set up a copy of the project on your local mach
 4. Run the development server:
    ```bash
    python manage.py runserver
-
-## Running the Tests
-To run the automated tests for this system:
+5. Running the Tests:
    ```bash
    pytest
 
