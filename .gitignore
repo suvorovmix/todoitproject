@@ -1,0 +1,16 @@
+.DS_Store
+.vscode
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+/todoitproject/media/*
+/todoitproject/static/*
+/env
+*.pid
+*.db
+*.rdb
+json_dumps.json
+/logs
+db.sqlite3

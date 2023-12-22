@@ -1,0 +1,26 @@
+body {
+background: rgba(126, 70, 205, 1.0);
+background: -webkit-radial-gradient(center, rgba(126, 70, 205, 1.0), rgba(26, 45, 68, 1.0));
+background: -moz-radial-gradient(center, rgba(126, 70, 205, 1.0), rgba(26, 45, 68, 1.0));
+background: radial-gradient(ellipse at center, rgba(126, 70, 205, 1.0), rgba(26, 45, 68, 1.0));
+}
+
+#navbar {
+	color: rgba(255,255,255,.9);
+}
+
+#footer {
+	color: rgba(255,255,255,.9);
+}
+
+.navbar-light .navbar-nav .active > 
+.nav-link, .navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show >
+.nav-link {
+    color: rgba(255,255,255,.9);
+}
+
+.text-muted {
+    color: #9ACD32!important;
+}

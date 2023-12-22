@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} PROFILE {% endblock title %}
+{% block content %}
+
+<!-- Profile-->
+<div id="task-form-block" class="col-md-12 my-3 py-3 border border-dark">
+    <h3 class="text-center">Profile</h3>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Username: @{{user.get_username}}</li>
+      <li class="list-group-item">Full Name: {{user.get_full_name}}</li>
+      <li class="list-group-item">Email: {{user.email}}</li>
+      <li class="list-group-item">Registered at: {{user.date_joined}}</li>
+      <li class="list-group-item">Active Tasks: <span class="badge badge-info badge-pill">{{active_tasks}}</span></li>
+      <li class="list-group-item">Completed Tasks: <span class="badge badge-success badge-pill">{{completed_tasks}}</span></li>
+    </ul>           
+  </div>
+  <!-- End Profile -->
+
+{% endblock content %}

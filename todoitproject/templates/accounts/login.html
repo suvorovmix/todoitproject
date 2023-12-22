@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} LOGIN {% endblock title %}
+
+{% block content %}
+<!-- Header -->
+<div class="my-3" id="header">
+    <img src="{% static './img/test_logo.png' %}" class="mx-auto d-block" height="200px;">
+</div>
+<!-- End Header -->
+
+<!-- Login Form -->
+<div id="login-form-block" class="col-md-12 my-3 py-3 text-center">
+
+  <form action="{% url 'login' %}" method="POST" class="needs-validation" novalidate>
+  {% csrf_token %}
+    <h3 class="text-center">Please sign in</h3>
+
+        <!-- Username -->
+    <div class="form-row">
+        <div class="col-md-4"></div>
+        <div class="form-group col-md-4">
+          <label for="username" class="sr-only">Username</label>
+          <input name="username" type="text" class="form-control" id="username" placeholder="Username" required>
+          <div class="valid-feedback">
+            Username looks good!
+          </div>
+          <div class="invalid-feedback">
+              Please fill title field.
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>  
+        <!-- End Username -->
+
+        <!-- Password -->
+    <div class="form-row">
+        <div class="col-md-4"></div>
+        <div class="form-group col-md-4">
+          <label for="password" class="sr-only">Password</label>
+          <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+          <div class="valid-feedback">
+            Password looks good!
+          </div>
+          <div class="invalid-feedback">
+              Please fill title field.
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+        <!-- End Password -->
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  <p class="m-2">OR</p>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <a href="{% url 'register' %}" class="btn btn-info btn-block mr-2">Register</a>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
+  </form>           
+</div>
+<!-- End Login Form -->
+
+
+{% endblock content %}

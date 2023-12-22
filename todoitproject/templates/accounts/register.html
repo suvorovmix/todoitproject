@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} REGISTER {% endblock title %}
+
+{% block content %}
+<!-- Header -->
+<div class="my-3" id="header">
+    <img src="{% static './img/test_logo.png' %}" class="mx-auto d-block" height="200px;">
+</div>
+<!-- End Header -->
+
+<!-- Register Form -->
+<div id="login-form-block" class="col-md-12 my-3 py-3 text-center" id="login-form-block">
+
+  <form action="{% url 'register' %}" method="POST" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <h3 class="text-center">Registration</h3>
+
+        <!-- Username -->
+    <div class="form-row">
+        <div class="col-md-4"></div>
+        <div class="form-group col-md-4">
+          <label for="username" class="sr-only">Username</label>
+          <input name="username" type="text" class="form-control" id="username" placeholder="Username" required>
+          <div class="valid-feedback">
+            Username looks good!
+          </div>
+          <div class="invalid-feedback">
+              Please fill title field.
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>  
+        <!-- End Username -->
+
+        <!-- Firstname -->
+    <div class="form-row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <label for="first_name" class="sr-only">Firstname</label>
+        <input name="first_name" type="text" class="form-control" id="first_name" placeholder="Firstname" required>
+        <div class="valid-feedback">
+          Firstname looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please fill title field.
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>  
+      <!-- End Firstname -->
+
+      <!-- Lastname -->
+    <div class="form-row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <label for="last_name" class="sr-only">Lastname</label>
+        <input name="last_name" type="text" class="form-control" id="last_name" placeholder="Lastname" required>
+        <div class="valid-feedback">
+          Lastname looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please fill title field.
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>  
+      <!-- End Lastname -->
+
+      <!-- Email -->
+    <div class="form-row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <label for="email" class="sr-only">Email</label>
+        <input name="email" type="email" class="form-control" id="email" placeholder="Email" required>
+        <div class="valid-feedback">
+          Email looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please fill title field.
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>  
+      <!-- End Email -->
+
+        <!-- Password -->
+    <div class="form-row">
+        <div class="col-md-4"></div>
+        <div class="form-group col-md-4">
+          <label for="password" class="sr-only">Password</label>
+          <input name="password" type="text" class="form-control" id="password" placeholder="Password" required>
+          <div class="valid-feedback">
+            Password looks good!
+          </div>
+          <div class="invalid-feedback">
+              Please fill title field.
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+        <!-- End Password -->
+
+        <!-- Password1 -->
+    <div class="form-row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <label for="password1" class="sr-only">Password</label>
+        <input name="password1" type="text" class="form-control" id="password1" placeholder="Repeat password" required>
+        <div class="valid-feedback">
+          Repeated password looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please fill title field.
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+      <!-- End Password1 -->
+  
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <button class="btn btn-block btn-primary" type="submit">Register</button>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    <p class="m-2">OR</p>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <a class="btn btn-block btn-info mr-2" href="{% url 'login' %}">Sign in</a>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+
+  </form>           
+</div>
+<!-- Register Login Form -->
+
+{% endblock content %}

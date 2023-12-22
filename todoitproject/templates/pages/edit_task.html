@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} EDIT TASK {% endblock title %}
+{% block content %}
+
+<!-- Edit Task Form -->
+<div id="task-form-block" class="col-md-12 my-3 py-3 border border-dark">
+    <form action="{% url 'edit_task' task.id %}" method="POST" id="task-block" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <h3 class="text-center">Edit Task</h3>
+
+        <div class="form-row">
+            <!-- title -->
+            <div class="form-group col-md-6 mb-3">
+                <label for="title">Title</label>
+                <input name="title" type="text" class="form-control" id="title" placeholder="Task Title will be there" maxlength="50" required value="{{task.title}}">
+                <small id="titleHelp" class="form-text text-muted">Task title (max length 50 symbols)</small>
+                <div class="valid-feedback">
+                    Title looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please fill title field.
+                </div>
+            </div>
+            <!-- End title -->
+            <!-- priority -->
+            <div class="form-group col-md-6 mb-3">
+                <label for="priority">Priority</label>
+                <select name="priority" id="priority" class="form-control">
+                {% if task.priority == 'No priority' %}
+                <option value="No priority" selected>No priority</option>
+                {% else %}
+                <option value="No priority">No priority</option>
+                {% endif %}
+                <option value="Low"
+                {% if task.priority == 'Low' %} selected {% endif %}
+                >Low</option>
+                <option value="Medium"
+                {% if task.priority == 'Medium' %} selected {% endif %}
+                >Medium</option>
+                <option value="High"
+                {% if task.priority == 'High' %} selected {% endif %}
+                >High</option>
+                </select>
+            </div>
+            <!-- End priority -->
+        </div>
+        <!-- description -->
+        <div class="form-row">
+            <div class="form-group col-md-12 mb-3" >
+                <label for="desription">Description</label>
+                <textarea name="description" class="form-control" id="desription" rows="3" placeholder="{{task.description}}" maxlength="200" required></textarea>
+                <small id="descriptionHelp" class="form-text text-muted" >Task description (max length 200 symbols)</small>
+                <div class="valid-feedback">
+                    Decription looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please describe your task.
+                </div>
+            </div>
+        </div>
+        <!-- End description -->
+        <button type="submit" class="btn btn-warning">Edit Task</button>
+        <a class="btn btn-secondary" href="/">Cancel</a>
+    </form>
+</div>
+<!-- End Edit Task Form -->
+
+{% endblock content %}

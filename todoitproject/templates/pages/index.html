@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} HOME {% endblock title %}
+{% block content %}
+
+        <!-- Edit Task Form -->
+        <div id="task-form-block" class="col-md-12 my-3 py-3 border border-dark">
+            <form action="{% url 'create_task' %}" method="POST" id="task-block" class="needs-validation" novalidate>
+                {% csrf_token %}
+                <h3 class="text-center">Create Task</h3>
+
+                <div class="form-row">
+                    <!-- title -->
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="title">Title</label>
+                        <input name="title" type="text" class="form-control" id="title" placeholder="Title" maxlength="50" required>
+                        <small id="titleHelp" class="form-text text-muted">Task title (max length 50 symbols)</small>
+                        <div class="valid-feedback">
+                            Title looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please fill title field.
+                        </div>
+                    </div>
+                    <!-- End title -->
+                    <!-- priority -->
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="priority">Priority</label>
+                        <select name="priority" id="priority" class="form-control">
+                            <option value="No priority" selected>No priority</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                    <!-- End priority -->
+                </div>
+                <!-- description -->
+                <div class="form-row">
+                    <div class="form-group col-md-12 mb-3" >
+                        <label for="desription">Description</label>
+                        <textarea name="description" class="form-control" id="desription" rows="3" placeholder="Descrribe your task here" maxlength="200" required></textarea>
+                        <small id="descriptionHelp" class="form-text text-muted" >Task description (max length 200 symbols)</small>
+                        <div class="valid-feedback">
+                            Decription looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please describe your task.
+                        </div>
+                    </div>
+                </div>
+                <!-- End description -->
+                <button type="submit" class="btn btn-primary">Create Task</button>
+            </form>
+        </div>
+        <!-- End Edit Task Form -->
+
+        <!-- Active Tasks Block -->
+        <div id="active-tasks-block" class="col-md-12 my-3 py-3 border border-dark">
+            <h3 class="text-center">Active Tasks</h3>
+            <div class="row justify-content-center">
+                {% for task in tasks %}
+                    {% if not task.is_completed %}
+                        <div class="card border-dark mx-3 mb-3" style="width: 18rem;">
+                            <div class="card-header">
+                                {% if task.priority == 'No priority' %}
+                                <span class="badge badge-secondary">{{ task.priority }}</span>
+                                {% elif task.priority == 'Low' %}
+                                <span class="badge badge-success">{{ task.priority }}</span>
+                                {% elif task.priority == 'Medium' %}
+                                <span class="badge badge-warning">{{ task.priority }}</span>
+                                {% elif task.priority == 'High' %}
+                                <span class="badge badge-danger">{{ task.priority }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="card-body text-dark">
+                            <h5 class="card-title">{{task.title}}</h5>
+                            <p class="card-text">{{task.description}}</p>
+                            <a href="{% url 'edit_task' task.id %}" class="btn btn-outline-warning btn-block mb-1">Edit</a>
+                            <a href="{% url 'complete_task' task.id %}" class="btn btn-outline-success btn-block mb-1">Complete</a>
+                            <a href="{% url 'delete_task' task.id %}" class="btn btn-outline-danger btn-block mb-1">Delete</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="row justify-content-center">
+                <a href="{% url 'complete_all_tasks' %}" class="btn btn-success mr-1">Complete all</a>
+                <a href="{% url 'delete_active_tasks' %}" class="btn btn-danger mr-1">Delete all</a>
+            </div>
+        </div>
+        <!-- End Active Tasks Block -->
+
+        <!-- Completed Tasks Block -->
+        <div id="completed-tasks-block" class="col-md-12 my-3 py-3 border border-dark">
+            <h3 class="text-center">Completed Tasks</h3>
+            <div class="row justify-content-center">
+                {% for task in tasks %}
+                    {% if task.is_completed %}
+                        <div class="card border-dark mx-3 mb-3" style="width: 18rem;">
+                            <div class="card-header">
+                                {% if task.priority == 'No priority' %}
+                                <span class="badge badge-secondary">{{ task.priority }}</span>
+                                {% elif task.priority == 'Low' %}
+                                <span class="badge badge-success">{{ task.priority }}</span>
+                                {% elif task.priority == 'Medium' %}
+                                <span class="badge badge-warning">{{ task.priority }}</span>
+                                {% elif task.priority == 'High' %}
+                                <span class="badge badge-danger">{{ task.priority }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="card-body text-dark">
+                            <h5 class="card-title">{{task.title}}</h5>
+                            <p class="card-text">{{task.description}}</p>
+                            <a href="{% url 'complete_task' task.id %}" class="btn btn-outline-success btn-block mb-1">Uncomplete</a>
+                            <a href="{% url 'delete_task' task.id %}" class="btn btn-outline-danger btn-block mb-1">Delete</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="row justify-content-center">
+                <a href="{% url 'delete_completed_tasks' %}" class="btn btn-danger mr-1">Delete all</a>
+            </div>
+        </div>
+        <!-- End Completed Tasks Block -->
+
+{% endblock content %}
